@@ -1,0 +1,47 @@
+import random
+import numpy as np
+match=5
+mismatch=-4
+i=0
+str1=""
+str2=""
+#generating random sequences
+while(i<16):
+    c=random.randint(1,100)%4
+    if(c==0):
+        str1=str1+"A"
+    elif(c==1):
+        str1=str1+"C"
+    elif(c==2):
+        str1=str1+"G"
+    else :
+        str1=str1+"T"
+    i+=1
+i=0
+while(i<16):
+    c=random.randint(1,100)%4
+    if(c==0):
+        str2=str2+"A"
+    elif(c==1):
+        str2=str2+"C"
+    elif(c==2):
+        str2=str2+"G"
+    else :
+        str2=str2+"T"
+    i+=1
+print("seq1 : ",str1)
+print("seq2 : ",str2)
+
+#creating scoring matrix
+score=np.array([[0]*17]*17)
+
+#setting boundary condition
+i=0
+while(i<17):
+    score[0][i]=-i
+    score[i][0]=-i
+    i+=1
+
+print(score)
+
+#filling the scoring matrix
